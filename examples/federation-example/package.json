@@ -11,6 +11,8 @@
     "start-service-reviews": "nodemon services/reviews/index.js",
     "start-service-products": "nodemon services/products/index.js",
     "start-service-inventory": "nodemon services/inventory/index.js",
+    "start-service-aviator": "nodemon services/aviator/index.js",
+    "start-service-shopper": "nodemon services/shopper/index.js",
     "start-services": "concurrently \"npm:start-service-*\""
   },
   "devDependencies": {
@@ -18,6 +20,7 @@
     "nodemon": "2.0.6"
   },
   "dependencies": {
+    "@apollo/federation": "^0.25.0",
     "@graphql-mesh/cli": "0.29.11",
     "@graphql-mesh/graphql": "0.17.6",
     "@graphql-mesh/merger-federation": "0.8.38",

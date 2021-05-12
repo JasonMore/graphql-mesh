@@ -1,0 +1,36 @@
+merger: federation
+sources:
+  - name: accounts
+    handler:
+      graphql:
+        endpoint: http://localhost:9871/graphql
+    transforms:
+      - federation:
+          types:
+            - name: Query
+              config:
+                extend: true
+            - name: User
+              config:
+                keyFields:
+                  - id
+                resolveReference:
+                  targetSource: accounts
+                  targetMethod: user
+                  args:
+                    id: root.id
+  - name: reviews
+    handler:
+      graphql:
+        endpoint: http://localhost:9872/graphql
+  - name: products
+    handler:
+      graphql:
+        endpoint: http://localhost:9873/graphql
+  - name: inventory
+    handler:
+      graphql:
+        endpoint: http://localhost:9874/graphql
+
+serve:
+  exampleQuery: example-query.graphql
